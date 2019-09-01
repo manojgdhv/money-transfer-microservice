@@ -3,7 +3,9 @@ RESTful API (including data model and the backing implementation) for money tran
 
 # Technology stack
 RestEasy Rest API implementation
+
 H2 in memory database
+
 Embeded Tomcat 
 
 # To run
