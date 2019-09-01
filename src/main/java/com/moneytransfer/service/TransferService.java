@@ -16,6 +16,11 @@ public class TransferService {
         this.accountService = new AccountService();
     }
 
+    public TransferService(RepositoryFactory repositoryFactory, AccountService accountService) {
+        this.repositoryFactory = repositoryFactory;
+        this.accountService = accountService;
+    }
+
     public Transfer transfer(TransferRequest transferRequest) {
         accountService.validateAccountId(transferRequest.sourceAccountId);
         accountService.validateAccountId(transferRequest.destinationAccountId);
@@ -31,7 +36,7 @@ public class TransferService {
         return getTransferRepository().getTransfers();
     }
 
-    TransferRepository getTransferRepository() {
+    private TransferRepository getTransferRepository() {
         return repositoryFactory.getTransferRepository();
     }
 
