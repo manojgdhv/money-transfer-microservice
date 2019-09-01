@@ -23,6 +23,10 @@ public class AccountController {
         this.accountService = new AccountService();
     }
 
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Account> getAllAccounts() {
@@ -55,4 +59,5 @@ public class AccountController {
     public void deleteAccount(@PathParam(Constant.ACCOUNT_ID_PATH_PARAM) String accountId) {
         accountService.deleteAccount(accountId);
     }
+
 }

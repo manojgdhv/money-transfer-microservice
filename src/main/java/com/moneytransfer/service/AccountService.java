@@ -14,6 +14,10 @@ public class AccountService {
         this.repositoryFactory = new RepositoryFactory();
     }
 
+    public AccountService(RepositoryFactory repositoryFactory) {
+        this.repositoryFactory = repositoryFactory;
+    }
+
     public List<Account> getAllAccounts() {
         return getAccountRepository().getAllAccounts();
     }
@@ -36,7 +40,7 @@ public class AccountService {
         return getAccountRepository().updateAccount(account);
     }
 
-    public void validateAccountId(String accountId) {
+    void validateAccountId(String accountId) {
         if (!getAccountRepository().isAccountExists(accountId)) {
             throw new AccountNotFoundException(String.format("Account [%s] doesn't exist in the system", accountId));
         }

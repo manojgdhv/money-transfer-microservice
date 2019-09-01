@@ -21,6 +21,10 @@ public class TransferController {
         transferService = new TransferService();
     }
 
+    public TransferController(TransferService transferService) {
+        this.transferService = transferService;
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
