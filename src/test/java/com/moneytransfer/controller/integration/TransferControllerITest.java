@@ -1,9 +1,12 @@
-package com.moneytransfer.controller;
+package com.moneytransfer.controller.integration;
 
+import com.moneytransfer.controller.TransferController;
 import com.moneytransfer.domain.TransferRequest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
@@ -28,7 +31,7 @@ public class TransferControllerITest extends IntegrationTest {
     }
 
     @Test
-    public void postSimpleBody() {
+    public void testTransferRequest() {
         TransferRequest request = new TransferRequest();
         request.sourceAccountId = "1";
         request.destinationAccountId = "2";
@@ -41,5 +44,18 @@ public class TransferControllerITest extends IntegrationTest {
 
     }
 
-    //TODO: Add more test cases
+    @Test
+    public void testGetAllTransfers() {
+        final Response response1 = newRequest("/api/v1/transfers").request().buildGet().invoke();
+        assertEquals(Response.Status.OK.getStatusCode(), response1.getStatus());
+
+    }
+
+    @Test
+    public void testGetTransfer() {
+        final Response response = newRequest("/api/v1/transfers/1").request().buildGet().invoke();
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+    }
+
+    //TODO: Add more comprehensive test cases
 }

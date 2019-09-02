@@ -1,4 +1,4 @@
-package com.moneytransfer.controller;
+package com.moneytransfer.controller.integration;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
