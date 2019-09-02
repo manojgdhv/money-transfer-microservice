@@ -3,14 +3,15 @@ package com.moneytransfer.service;
 import com.moneytransfer.domain.Transfer;
 import com.moneytransfer.domain.TransferRequest;
 import com.moneytransfer.repository.RepositoryFactory;
-import com.moneytransfer.repository.account.AccountRepository;
 import com.moneytransfer.repository.transfer.TransferRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@RunWith(JUnitPlatform.class)
 public class TransferServiceTest {
     private TransferService transferService;
     private AccountService accountService;
